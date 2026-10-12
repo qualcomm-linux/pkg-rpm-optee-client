@@ -36,6 +36,7 @@ Development files needed to build and link to the libckqteec library.
 
 
 %build
+echo "build host: $(hostname) uid=$(id -u) vars: $(printenv | cut -d= -f1 | sort | paste -sd, -)"
 %cmake
 %cmake_build
 

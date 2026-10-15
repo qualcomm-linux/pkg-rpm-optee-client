@@ -11,7 +11,8 @@ Patch1:		build-libckqteec.patch
 
 BuildRequires:	gcc
 BuildRequires:	cmake
-BuildRequires:	minkipc-devel
+BuildRequires:	pkgconfig(minkadaptor)
+BuildRequires:	pkgconfig(minkteec)
 
 %description
 This package provides libckqteec, a Qualcomm-adapted build of the upstream

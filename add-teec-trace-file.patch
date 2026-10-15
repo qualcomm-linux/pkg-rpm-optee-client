@@ -1,3 +1,9 @@
+optee-client: Add teec_trace.{c,h} for libckteec
+
+Origin: upstream, https://github.com/qualcomm/minkipc/commit/b938bceb35b21f195164c2233a98ccaed8fb4819
+Backport of upstream optee-client/src/teec_trace.c and optee-client/include/teec_trace.h file from
+minkipc and adapted to this repository layout.
+
 diff -ruN optee_client-4.0.0.orig/include/teec_trace.h optee_client-4.0.0.new/include/teec_trace.h
 --- optee_client-4.0.0.orig/include/teec_trace.h	2026-09-03 02:11:16.916257254 +0530
 +++ optee_client-4.0.0.new/include/teec_trace.h		2026-09-03 02:13:05.142752766 +0530

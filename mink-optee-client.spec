@@ -7,7 +7,8 @@ License:	BSD-2-Clause
 URL:		https://github.com/OP-TEE/optee_client
 Source0:	https://github.com/OP-TEE/optee_client/archive/refs/tags/%{version}.tar.gz#/optee_client-%{version}.tar.gz
 Patch0:		add-teec-trace-file.patch
-Patch1:		build-libckqteec.patch
+Patch1:		build-libckteec.patch
+Patch2:		rename-libckteec-to-libckqteec.patch
 
 BuildRequires:	gcc
 BuildRequires:	cmake
@@ -33,7 +34,7 @@ Development files needed to build and link to the libckqteec library.
 
 %prep
 %setup -q -n optee_client-%{version}
-%patch -P0 -P1 -p1
+%patch -P0 -P1 -P2 -p1
 
 
 %build

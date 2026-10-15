@@ -9,6 +9,7 @@ Source0:	https://github.com/OP-TEE/optee_client/archive/refs/tags/%{version}.tar
 Patch0:		add-teec-trace-file.patch
 Patch1:		build-libckteec.patch
 Patch2:		rename-libckteec-to-libckqteec.patch
+Patch3:		use-pkgconfig-for-mink.patch
 
 BuildRequires:	gcc
 BuildRequires:	cmake
@@ -34,7 +35,7 @@ Development files needed to build and link to the libckqteec library.
 
 %prep
 %setup -q -n optee_client-%{version}
-%patch -P0 -P1 -P2 -p1
+%patch -P0 -P1 -P2 -P3 -p1
 
 
 %build

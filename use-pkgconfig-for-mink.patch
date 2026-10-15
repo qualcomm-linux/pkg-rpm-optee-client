@@ -1,0 +1,28 @@
+optee: Locate libmink* via pkg-config
+
+Backported from the upstream change: https://github.com/qualcomm/minkipc/pull/110
+
+diff -ruN optee_client-4.0.0.orig/CMakeLists.txt optee_client-4.0.0.new/CMakeLists.txt
+--- optee_client-4.0.0.orig/CMakeLists.txt	2026-09-03 02:11:16.916257254 +0530
++++ optee_client-4.0.0.new/CMakeLists.txt	2026-09-03 02:13:05.142752766 +0530
+@@ -40,6 +40,9 @@ endif(CCACHE_FOUND)
+ ################################################################################
+ # Packages
+ ################################################################################
++find_package(PkgConfig REQUIRED)
++pkg_check_modules(MINKTEEC REQUIRED IMPORTED_TARGET minkteec)
++pkg_check_modules(MINKADAPTOR REQUIRED IMPORTED_TARGET minkadaptor)
+ find_package(Threads REQUIRED)
+ if(NOT THREADS_FOUND)
+ 	message(FATAL_ERROR "Threads not found")
+@@ -96,8 +99,8 @@ target_include_directories(ckqteec
+ 
+ target_link_libraries(ckqteec
+ 	PRIVATE pthread
+-	PRIVATE minkteec
+-	PRIVATE minkadaptor
++	PRIVATE PkgConfig::MINKTEEC
++	PRIVATE PkgConfig::MINKADAPTOR
+ 	PRIVATE m
+ )
+ 

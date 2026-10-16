@@ -1,17 +1,20 @@
 Name:		mink-optee-client
 Version:	4.0.0
-Release:	1%{?dist}
+Release:	1.qli%{?dist}
 Summary:	Qualcomm mink based optee client library for PKCS#11
 
 License:	BSD-2-Clause
 URL:		https://github.com/OP-TEE/optee_client
 Source0:	https://github.com/OP-TEE/optee_client/archive/refs/tags/%{version}.tar.gz#/optee_client-%{version}.tar.gz
 Patch0:		add-teec-trace-file.patch
-Patch1:		build-libckqteec.patch
+Patch1:		build-libckteec.patch
+Patch2:		rename-libckteec-to-libckqteec.patch
+Patch3:		use-pkgconfig-for-mink.patch
 
 BuildRequires:	gcc
 BuildRequires:	cmake
-BuildRequires:	minkipc-devel
+BuildRequires:	pkgconfig(minkadaptor)
+BuildRequires:	pkgconfig(minkteec)
 
 %description
 This package provides libckqteec, a Qualcomm-adapted build of the upstream
@@ -32,7 +35,7 @@ Development files needed to build and link to the libckqteec library.
 
 %prep
 %setup -q -n optee_client-%{version}
-%patch -P0 -P1 -p1
+%patch -P0 -P1 -P2 -P3 -p1
 
 
 %build
@@ -56,5 +59,5 @@ Development files needed to build and link to the libckqteec library.
 
 
 %changelog
-* Wed Sep 02 2026 Abhinaba Rakshit <abhinaba.rakshit@oss.qualcomm.com> - 4.0.0-1
-- Initial RPM package with upstream v4.0.0
+* Thu Oct 15 2026 Abhinaba Rakshit <abhinaba.rakshit@oss.qualcomm.com> - 4.0.0-1.qli
+- Initial RPM packaging with upstream v4.0.0
